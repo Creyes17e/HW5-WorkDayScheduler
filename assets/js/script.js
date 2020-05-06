@@ -5,8 +5,9 @@ $(document).ready(function () {
   console.log(currentDay);
 
   // Create timeblocks
-
+  //Container for scheduler
   let dayScheduler = $("#daySchedulerContainer");
+  //Removes from element
   dayScheduler.empty();
   let hour = 8;
   let i = hour - 8;
@@ -28,6 +29,7 @@ $(document).ready(function () {
     colDiv.addClass("hour");
     rowDiv.append(colDiv);
 
+    //Insert the time slots
     let timeSlotSpan = $("<span>");
     timeSlotSpan.addClass("timeSlot");
     timeSlotSpan.attr("class", "timeSlot");
@@ -43,5 +45,14 @@ $(document).ready(function () {
     timeSlotSpan.text(showHour + ampm);
 
     colDiv.append(timeSlotSpan);
+
+    //Create input fields
+    let userInput = $("<input>");
+    userInput.attr("id", `input-${i}`);
+    userInput.attr("hour-index", i);
+    userInput.attr("type", "text");
+    userInput.attr("class", "userInput");
+
+    rowDiv.append(userInput);
   }
 });
