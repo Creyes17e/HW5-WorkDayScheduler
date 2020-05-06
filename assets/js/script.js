@@ -24,23 +24,24 @@ $(document).ready(function () {
 
     // Create Column for time slots
     let colDiv = $("<div>");
-    colDiv.addClass("col-md-4");
+    colDiv.addClass("col-md-2");
     colDiv.addClass("hour");
     rowDiv.append(colDiv);
-  }
-  // let timeSlotSpan = "<span>";
-  // timeSlotSpan.attr("class", timeSlot);
-  // let showHour = 0;
-  // let ampm = "";
-  // if (hour > 12) {
-  //   showHour = hour - 12;
-  //   ampm = "pm";
-  // } else {
-  //   showHour = hour;
-  //   ampm = "am";
-  // }
-  // timeSlotSpan.text(showHour && ampm);
 
-  // rowDiv.append(colDiv);
-  // colDiv.append(timeSlotSpan);
+    let timeSlotSpan = $("<span>");
+    timeSlotSpan.addClass("timeSlot");
+    timeSlotSpan.attr("class", "timeSlot");
+    let showHour = 0;
+    let ampm = "";
+    if (hour > 12) {
+      showHour = hour - 12;
+      ampm = "pm";
+    } else {
+      showHour = hour;
+      ampm = "am";
+    }
+    timeSlotSpan.text(showHour + ampm);
+
+    colDiv.append(timeSlotSpan);
+  }
 });
