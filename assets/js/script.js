@@ -5,6 +5,7 @@ $(document).ready(function () {
   console.log(currentDay);
 
   // Create timeblocks
+
   //Container for scheduler
   let dayScheduler = $("#daySchedulerContainer");
   //Removes from element
@@ -12,47 +13,63 @@ $(document).ready(function () {
   let hour = 8;
   let i = hour - 8;
 
-  for (let hour = 8; hour <= 18; hour++) {
-    let i = hour - 8;
+  for (let hour = 8; hour <= 17; hour++) {
+    let i = 0;
 
     //Create rows for each hour
     var rowDiv = $("<div>");
     rowDiv.addClass("row");
     rowDiv.addClass("daySchedulerRow");
-    rowDiv.attr("hour-index", hour);
+    rowDiv.attr("hourIndex", hour);
 
     $("#daySchedulerContainer").append(rowDiv);
 
-    // Create Column for time slots
-    let colDiv = $("<div>");
-    colDiv.addClass("col-md-2");
-    colDiv.addClass("hour");
-    rowDiv.append(colDiv);
+    //Created Columns and inserted the time slots (FIX TIME SLOTS 12AM NEEDS TO BE 12PM)
+    let timeBlockDivCol = $("<div>");
+    timeBlockDivCol.addClass("col-md-2");
+    timeBlockDivCol.addClass("hour");
 
-    //Insert the time slots
-    let timeSlotSpan = $("<span>");
-    timeSlotSpan.addClass("timeSlot");
-    timeSlotSpan.attr("class", "timeSlot");
+    let timeBlockSpan = $("<span>");
+    timeBlockSpan.addClass("time-block");
+    timeBlockSpan.attr("class", "time-block ");
     let showHour = 0;
-    let ampm = "";
+    let amPm = "";
     if (hour > 12) {
       showHour = hour - 12;
-      ampm = "pm";
+      amPm = "pm";
     } else {
       showHour = hour;
-      ampm = "am";
+      amPm = "am";
     }
-    timeSlotSpan.text(showHour + ampm);
+    timeBlockSpan.text(showHour + amPm);
 
-    colDiv.append(timeSlotSpan);
+    rowDiv.append(timeBlockDivCol);
+    timeBlockDivCol.append(timeBlockSpan);
 
     //Create input fields
+    let userInputDiv = $("<div>");
+    userInputDiv.addClass("col-md-8");
+
     let userInput = $("<input>");
     userInput.attr("id", `input-${i}`);
-    userInput.attr("hour-index", i);
+    userInput.attr("hourIndex", i);
     userInput.attr("type", "text");
     userInput.attr("class", "userInput");
 
-    rowDiv.append(userInput);
+    rowDiv.append(userInputDiv);
+    userInputDiv.append(userInput);
+
+    //Create Column for SaveBtn icon
+    let colSaveBtn = $("<div>");
+    colSaveBtn.addClass("col-md-2");
+    colSaveBtn.addClass("colSaveBtn");
+
+    let saveBtn = $("<i>");
+    saveBtn.attr("id", `saveBtn-${i}`);
+    saveBtn.attr("saveBtn", i);
+    saveBtn.attr("class", "fas fa-piggy-bank saveBtn");
+
+    rowDiv.append(colSaveBtn);
+    colSaveBtn.append(saveBtn);
   }
 });
