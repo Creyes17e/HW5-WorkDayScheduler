@@ -4,8 +4,6 @@ $(document).ready(function () {
   $("#currentDay").text(currentDay.toDateString());
   console.log(currentDay);
 
-  // Create timeblocks
-
   //Container for scheduler
   let dayScheduler = $("#daySchedulerContainer");
   //Removes from element
@@ -26,14 +24,14 @@ $(document).ready(function () {
 
     $("#daySchedulerContainer").append(rowDiv);
 
-    //Created Columns and inserted the time slots (FIX TIME SLOTS 12AM NEEDS TO BE 12PM)
-    let timeBlockDivCol = $("<div>");
-    timeBlockDivCol.addClass("col-md-2");
-    timeBlockDivCol.addClass("hour");
+    //Created time Column and inserted the time slots
+    let timeDivCol = $("<div>");
+    timeDivCol.addClass("col-md-2");
+    timeDivCol.addClass("hour");
 
-    let timeBlockSpan = $("<span>");
-    timeBlockSpan.addClass("time-block");
-    timeBlockSpan.attr("class", "time-block ");
+    let timeSpan = $("<span>");
+    timeSpan.addClass("time-block");
+    timeSpan.attr("class", "time-block ");
     let showHour = 0;
     let amPm = "";
     if (hour > 12) {
@@ -46,14 +44,14 @@ $(document).ready(function () {
       showHour = hour;
       amPm = "am";
     }
-    timeBlockSpan.text(showHour + amPm);
+    timeSpan.text(showHour + amPm);
 
-    rowDiv.append(timeBlockDivCol);
-    timeBlockDivCol.append(timeBlockSpan);
+    rowDiv.append(timeDivCol);
+    timeDivCol.append(timeSpan);
 
-    //Create input fields
-    let userInputDiv = $("<div>");
-    userInputDiv.addClass("col-md-8");
+    //Create column for input fields
+    let userInputDivCol = $("<div>");
+    userInputDivCol.addClass("col-md-8");
 
     let userInput = $("<input>");
     userInput.attr("id", "input");
@@ -61,20 +59,42 @@ $(document).ready(function () {
     userInput.attr("type", "text");
     userInput.attr("class", "userInput");
 
-    rowDiv.append(userInputDiv);
-    userInputDiv.append(userInput);
+    rowDiv.append(userInputDivCol);
+    userInputDivCol.append(userInput);
 
     //Create Column for SaveBtn icon
-    let colSaveBtn = $("<div>");
-    colSaveBtn.addClass("col-md-2");
-    colSaveBtn.addClass("colSaveBtn");
+    let saveBtnDivCol = $("<div>");
+    saveBtnDivCol.addClass("col-md-2");
+    saveBtnDivCol.addClass("colSaveBtn");
 
     let saveBtn = $("<i>");
     saveBtn.attr("id", "saveBtn");
     saveBtn.attr("saveBtn", i);
     saveBtn.attr("class", "fas fa-piggy-bank saveBtn");
 
-    rowDiv.append(colSaveBtn);
-    colSaveBtn.append(saveBtn);
+    rowDiv.append(saveBtnDivCol);
+    saveBtnDivCol.append(saveBtn);
+
+    //Update color to indicate past
+    let currentHour = moment().format("H");
+    console.log(currentHour);
+    console.log(hour);
+
+    if (currentHour > hour) {
+      userInputDivCol.css("background-color", "gray");
+    } else if (currentHour < hour) {
+      userInputDivCol.css("background-color", "green");
+    } else {
+      userInputDivCol.css("background-color", "red");
+    }
   }
+  //Create onClick for saveBtn
+  const test = true; //this will check if the click is working in the correct place
+  let storedPlans = JSON.parse(localStorage.getItem("storedPlans"));
+  $(saveBtn).on("click", function (event) {
+    event.preventDefault();
+    if (test) {
+      console.log("hi");
+    }
+  });
 });
