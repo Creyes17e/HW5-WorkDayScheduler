@@ -10,6 +10,8 @@ $(document).ready(function () {
   let dayScheduler = $("#daySchedulerContainer");
   //Removes from element
   dayScheduler.empty();
+
+  //# of Hours
   let hour = 8;
   let i = hour - 8;
 
@@ -37,6 +39,9 @@ $(document).ready(function () {
     if (hour > 12) {
       showHour = hour - 12;
       amPm = "pm";
+    } else if (hour === 12) {
+      showHour = hour;
+      amPm = "pm";
     } else {
       showHour = hour;
       amPm = "am";
@@ -51,7 +56,7 @@ $(document).ready(function () {
     userInputDiv.addClass("col-md-8");
 
     let userInput = $("<input>");
-    userInput.attr("id", `input-${i}`);
+    userInput.attr("id", "input");
     userInput.attr("hourIndex", i);
     userInput.attr("type", "text");
     userInput.attr("class", "userInput");
@@ -65,7 +70,7 @@ $(document).ready(function () {
     colSaveBtn.addClass("colSaveBtn");
 
     let saveBtn = $("<i>");
-    saveBtn.attr("id", `saveBtn-${i}`);
+    saveBtn.attr("id", "saveBtn");
     saveBtn.attr("saveBtn", i);
     saveBtn.attr("class", "fas fa-piggy-bank saveBtn");
 
