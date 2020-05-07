@@ -51,10 +51,10 @@ $(document).ready(function () {
 
     //Create column for input fields
     let userInputDivCol = $("<div>");
-    userInputDivCol.addClass("col-md-8");
+    userInputDivCol.addClass("col-md-9");
 
     let userInput = $("<input>");
-    userInput.attr("id", "input");
+    userInput.attr("id", "userInput");
     userInput.attr("hourIndex", i);
     userInput.attr("type", "text");
     userInput.attr("class", "userInput");
@@ -64,7 +64,7 @@ $(document).ready(function () {
 
     //Create Column for SaveBtn icon
     let saveBtnDivCol = $("<div>");
-    saveBtnDivCol.addClass("col-md-2");
+    saveBtnDivCol.addClass("col-md-1");
     saveBtnDivCol.addClass("colSaveBtn");
 
     let saveBtn = $("<i>");
@@ -81,20 +81,20 @@ $(document).ready(function () {
     console.log(hour);
 
     if (currentHour > hour) {
-      userInputDivCol.css("background-color", "gray");
+      userInputDivCol.css("background-color", "#d3d3d3");
     } else if (currentHour < hour) {
-      userInputDivCol.css("background-color", "green");
+      userInputDivCol.css("background-color", "#77dd77");
     } else {
-      userInputDivCol.css("background-color", "red");
+      userInputDivCol.css("background-color", "#ff6961");
     }
   }
+
+  // const userClicked = true; //this will check if the click is working in the correct place
+
+  //9 is the amount of inputs in the scheduler
+  userInputText = new Array(9);
   //Create onClick for saveBtn
-  const test = true; //this will check if the click is working in the correct place
-  let storedPlans = JSON.parse(localStorage.getItem("storedPlans"));
   $(saveBtn).on("click", function (event) {
-    event.preventDefault();
-    if (test) {
-      console.log("hi");
-    }
+    console.log("you clicked");
   });
 });
