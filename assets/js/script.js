@@ -26,7 +26,8 @@ $(document).ready(function () {
     let i = hour - 8;
 
     //Created rows for each hour
-    var rowDiv = $("<div class='row daySchedulerRow'>");
+    var rowDiv = $("<div class='row'>");
+    rowDiv.attr("id", "daySchedulerRow");
     rowDiv.attr("hourIndex", hour);
 
     $("#daySchedulerContainer").append(rowDiv);
@@ -55,7 +56,7 @@ $(document).ready(function () {
     timeDivCol.append(timeSpan);
 
     //Creates column for input fields
-    let userInputDivCol = $("<div class='col-md-9'>");
+    let userInputDivCol = $("<div class='col-md-9 justify-content-center'>");
 
     //Creates user input textbox
     let userInput = $("<input class='userInput'>");
