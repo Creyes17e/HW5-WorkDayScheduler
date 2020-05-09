@@ -75,9 +75,11 @@ h1 {
 }
 
 /*Styles for buttons*/
-.saveBtn i:hover {
+.saveBtn:hover {
   font-size: 20px;
+  cursor: pointer;
   transition: all 0.3s ease-in-out;
+  color: greenyellow;
 }
 .saveBtn {
   color: black;
