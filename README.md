@@ -1,3 +1,11 @@
 # HW5-WorkDayScheduler
 
-Credits: W3Schools, StackOverflow, Google Fu, Bootcamp Instructor/TAs, Bootcamp Activities, FontAwesome, Bootstrap
+Title: Work Day Scheduler
+
+Live Site:https://creyes17e.github.io/HW5-WorkDayScheduler/
+
+Description: Created a work day scheduler responsive app for someone who is busy and needs an online planner. User is able to store plans and update when needed by hitting the save icon. The scheduler will display color text boxes to represent the present, past or future time(s), to help the user plan accordingly.
+
+Installation: Created a repo in github with a README.md. Through gitbash I cloned the repo I pulled and pushed the origin master to add pages and folders in github. I added and committed meaningful changes and updated the html, css, and js code.
+
+Credits: W3Schools, YouTube, StackOverflow, Google Fu, Bootcamp Instructor/TAs, Bootcamp Unit 4 and Unit 5 Activities, FontAwesome, Bootstrap, MDN.
