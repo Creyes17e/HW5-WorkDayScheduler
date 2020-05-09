@@ -104,14 +104,17 @@ $(document).ready(function () {
   //Create onClick for saveBtn on document & saves
   $(document).on("click", "i", function (event) {
     event.preventDefault();
-    //This returns i above, I set save-id to i
-    let index = $(i).attr("save-id");
-    //this calls the user input id that is also returning i + index
-    let userInputId = "#userInput-" + index;
-    console.log(userInputId);
+    //This calls the # position of the array
+    let index = $(this).attr("save-id");
+    //this is returning userinput-(the # position in array)
+    let userInputId = "userInput-" + index;
+
+    //This returns the selector with the value of the user input text
     let value = $(userInputId).val();
     userInputText[index] = value;
-    //Saves user input
+    console.log(index);
+
+    //Saves user input text into a string
     localStorage.setItem("savedUserInput", JSON.stringify(userInputText));
   });
 });
