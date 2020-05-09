@@ -7,6 +7,8 @@ body {
 }
 .container {
   width: 65%;
+  padding: 3rem;
+  justify-content: center;
 }
 /* textarea {
   background: transparent;
@@ -40,22 +42,14 @@ h1 {
 
 .time-block {
   text-align: center;
-  border-radius: 15px;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  width: 30%;
-  height: 20%;
+  display: block;
 }
 
 .row {
   white-space: pre-wrap;
   height: 60px;
-  border-top: 1px solid white;
   background-color: transparent;
-
-  width: 100%;
+  margin: 0.5rem;
 }
 
 .hour {
@@ -76,17 +70,23 @@ h1 {
 
 /*Styles for buttons*/
 .saveBtn:hover {
-  font-size: 20px;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
   color: greenyellow;
 }
+
 .saveBtn {
   color: black;
-  text-align: center;
-  margin: 1.5rem;
-  position: absolute;
+  display: block;
+  margin: 1rem;
 }
 .colSaveBtn {
+  border-top: 1px solid #000000;
+  justify-content: center;
   background-color: palevioletred;
+}
+@media all and (max-width: 950px) and (min-width: 600px) {
+  .saveBtn {
+    margin: auto;
+  }
 }
