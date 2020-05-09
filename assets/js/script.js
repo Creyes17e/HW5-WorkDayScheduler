@@ -26,17 +26,13 @@ $(document).ready(function () {
     let i = hour - 8;
 
     //Created rows for each hour
-    var rowDiv = $("<div>");
-    rowDiv.addClass("row");
-    rowDiv.addClass("daySchedulerRow");
+    var rowDiv = $("<div class='row daySchedulerRow'>");
     rowDiv.attr("hourIndex", hour);
 
     $("#daySchedulerContainer").append(rowDiv);
 
     //Created time Column and inserted the time slots
-    let timeDivCol = $("<div>");
-    timeDivCol.addClass("col-md-2");
-    timeDivCol.addClass("hour");
+    let timeDivCol = $("<div class='col-md-2 hour'>");
 
     let timeSpan = $("<span>");
     timeSpan.addClass("time-block");
@@ -60,14 +56,13 @@ $(document).ready(function () {
     timeDivCol.append(timeSpan);
 
     //Creates column for input fields
-    let userInputDivCol = $("<div>");
-    userInputDivCol.addClass("col-md-9");
+    let userInputDivCol = $("<div class='col-md-9'>");
+
     //Creates user input textbox
-    let userInput = $("<input>");
+    let userInput = $("<input class='userInput'>");
     userInput.attr("id", `userInput-${i}`);
     userInput.attr("hourIndex", i);
     userInput.attr("type", "text");
-    userInput.attr("class", "userInput");
 
     //Retrieves user input text
     userInput.val(userInputText[i]);
@@ -76,15 +71,12 @@ $(document).ready(function () {
     userInputDivCol.append(userInput);
 
     //Creates Column for SaveBtn icon
-    let saveBtnDivCol = $("<div>");
-    saveBtnDivCol.addClass("col-md-1");
-    saveBtnDivCol.addClass("colSaveBtn");
+    let saveBtnDivCol = $("<div class='col-md-1 colSaveBtn'>");
 
     //Creates save btn icon
-    let saveBtn = $("<i>");
+    let saveBtn = $("<i class='fas fa-piggy-bank saveBtn'>");
     saveBtn.attr("id", `saveBtn-${i}`);
     saveBtn.attr("save-id", i);
-    saveBtn.attr("class", "fas fa-piggy-bank saveBtn");
 
     rowDiv.append(saveBtnDivCol);
     saveBtnDivCol.append(saveBtn);
