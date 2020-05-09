@@ -11,7 +11,7 @@ $(document).ready(function () {
 
   //Takes saved user input from local storage
   let savedUserInput = JSON.parse(localStorage.getItem("savedUserInput"));
-  //Creates the array of user input
+  //Creates the array of user input text
   if (savedUserInput != null) {
     userInputText = savedUserInput;
   } else {
@@ -107,12 +107,11 @@ $(document).ready(function () {
     //This calls the # position of the array
     let index = $(this).attr("save-id");
     //this is returning userinput-(the # position in array)
-    let userInputId = "userInput-" + index;
+    let userInputId = "#userInput-" + index;
 
-    //This returns the selector with the value of the user input text
+    //Value is the text the user inputs in the scheduler
     let value = $(userInputId).val();
     userInputText[index] = value;
-    console.log(index);
 
     //Saves user input text into a string
     localStorage.setItem("savedUserInput", JSON.stringify(userInputText));
