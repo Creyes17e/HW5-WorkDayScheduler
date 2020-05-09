@@ -6,17 +6,26 @@ $(document).ready(function () {
 
   //Container for scheduler
   let dayScheduler = $("#daySchedulerContainer");
-  //Removes from element
+  //Removes elements
   dayScheduler.empty();
 
-  //# of Hours
+  //Takes saved user input from local storage
+  let savedUserInput = JSON.parse(localStorage.getItem("savedUserInput"));
+  //Creates the array of user input
+  if (savedUserInput != null) {
+    userInputText = savedUserInput;
+  } else {
+    userInputText = new Array(9);
+  }
+  //# of Hours on scheduler
   let hour = 8;
   let i = hour - 8;
 
   for (let hour = 8; hour <= 17; hour++) {
-    let i = 0;
+    //Calls for all items in array
+    let i = hour - 8;
 
-    //Create rows for each hour
+    //Created rows for each hour
     var rowDiv = $("<div>");
     rowDiv.addClass("row");
     rowDiv.addClass("daySchedulerRow");
@@ -44,41 +53,44 @@ $(document).ready(function () {
       showHour = hour;
       amPm = "am";
     }
+    //Displays the numerical hour along with pm/am
     timeSpan.text(showHour + amPm);
 
     rowDiv.append(timeDivCol);
     timeDivCol.append(timeSpan);
 
-    //Create column for input fields
+    //Creates column for input fields
     let userInputDivCol = $("<div>");
     userInputDivCol.addClass("col-md-9");
-
+    //Creates user input textbox
     let userInput = $("<input>");
-    userInput.attr("id", "userInput");
+    userInput.attr("id", `userInput-${i}`);
     userInput.attr("hourIndex", i);
     userInput.attr("type", "text");
     userInput.attr("class", "userInput");
 
+    //Retrieves user input text
+    userInput.val(userInputText[i]);
+
     rowDiv.append(userInputDivCol);
     userInputDivCol.append(userInput);
 
-    //Create Column for SaveBtn icon
+    //Creates Column for SaveBtn icon
     let saveBtnDivCol = $("<div>");
     saveBtnDivCol.addClass("col-md-1");
     saveBtnDivCol.addClass("colSaveBtn");
 
+    //Creates save btn icon
     let saveBtn = $("<i>");
-    saveBtn.attr("id", "saveBtn");
-    saveBtn.attr("saveBtn", i);
+    saveBtn.attr("id", `saveBtn-${i}`);
+    saveBtn.attr("save-id", i);
     saveBtn.attr("class", "fas fa-piggy-bank saveBtn");
 
     rowDiv.append(saveBtnDivCol);
     saveBtnDivCol.append(saveBtn);
 
-    //Update color to indicate past
+    //Updates color to indicate past, present, and future(military time)
     let currentHour = moment().format("H");
-    console.log(currentHour);
-    console.log(hour);
 
     if (currentHour > hour) {
       userInputDivCol.css("background-color", "#d3d3d3");
@@ -89,12 +101,17 @@ $(document).ready(function () {
     }
   }
 
-  // const userClicked = true; //this will check if the click is working in the correct place
-
-  //9 is the amount of inputs in the scheduler
-  userInputText = new Array(9);
-  //Create onClick for saveBtn
-  $(saveBtn).on("click", function (event) {
-    console.log("you clicked");
+  //Create onClick for saveBtn on document & saves
+  $(document).on("click", "i", function (event) {
+    event.preventDefault();
+    //This returns i above, I set save-id to i
+    let index = $(i).attr("save-id");
+    //this calls the user input id that is also returning i + index
+    let userInputId = "#userInput-" + index;
+    console.log(userInputId);
+    let value = $(userInputId).val();
+    userInputText[index] = value;
+    //Saves user input
+    localStorage.setItem("savedUserInput", JSON.stringify(userInputText));
   });
 });
