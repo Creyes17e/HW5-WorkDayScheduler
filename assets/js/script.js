@@ -34,9 +34,8 @@ $(document).ready(function () {
     //Created time Column and inserted the time slots
     let timeDivCol = $("<div class='col-md-2 hour'>");
 
-    let timeSpan = $("<span>");
-    timeSpan.addClass("time-block");
-    timeSpan.attr("class", "time-block ");
+    let timeSpan = $("<span class='time-block'>");
+
     let showHour = 0;
     let amPm = "";
     if (hour > 12) {
