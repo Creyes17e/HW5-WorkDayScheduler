@@ -37,9 +37,6 @@ h1 {
   background-position: center;
 }
 /*Style for scheduler*/
-.description {
-  white-space: pre-wrap;
-}
 
 .time-block {
   text-align: center;
@@ -47,8 +44,6 @@ h1 {
 }
 
 .row {
-  white-space: pre-wrap;
-  height: 60px;
   background-color: transparent;
   margin: 0.5rem;
 }
@@ -67,6 +62,7 @@ h1 {
   background-color: transparent;
   justify-content: center;
   text-align: center;
+  white-space: pre-wrap;
 }
 
 /*Styles for buttons*/
