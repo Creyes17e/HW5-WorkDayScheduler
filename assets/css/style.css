@@ -85,7 +85,7 @@ h1 {
   justify-content: center;
   background-color: palevioletred;
 }
-@media all and (max-width: 950px) and (min-width: 500px) {
+@media all and (max-width: 950px) and (min-width: 400px) {
   .saveBtn {
     margin: auto;
   }
